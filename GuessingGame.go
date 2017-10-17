@@ -11,7 +11,7 @@ import (
 
 //function that prints the name to the web page
 func printName(w http.ResponseWriter, r *http.Request){
-    fmt.Fprintf(w, "Guessing Game")
+    fmt.Fprintf(w, "<h1>Guessing Game")
 }//end printName
 
 func main() {

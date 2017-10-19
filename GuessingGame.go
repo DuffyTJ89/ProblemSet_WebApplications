@@ -1,23 +1,21 @@
-// An  web application.
+// web application.
 // Author : Thomas Duffy
-//Adapted from : http://blog.scottlogic.com/2017/02/28/building-a-web-app-with-go.html
+//Adapted from : https://stackoverflow.com/questions/26559557/how-do-you-serve-a-static-html-file-using-a-go-web-server
+
 package main
 
 import (
-	"fmt"
+	"log"
 	"net/http"
-    
 )
 
-//function that prints the name to the web page
-func printName(w http.ResponseWriter, r *http.Request){
-    fmt.Fprintf(w, "<h1>Guessing Game")
-}//end printName
 
 func main() {
-	//handle requests by calling printName
-    http.HandleFunc("/", printName)
-	//start webserver and serve on port 8080
+
+
+	http.Handle("/", http.FileServer(http.Dir("./WebAppsProblemSheet")))
+	
+	log.Println("Listening....")
     http.ListenAndServe(":8080", nil)
 }
 

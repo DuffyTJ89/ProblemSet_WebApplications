@@ -10,12 +10,15 @@ import (
 )
 
 
+func server(w http.ResponseWriter, r *http.Request){
+		http.ServeFile(w, r, "guess.html")
+	}
+
+
 func main() {
-
-
-	http.Handle("/", http.FileServer(http.Dir("./WebAppsProblemSheet")))
+	http.HandleFunc("/", server)//"/" handles any requests and passes to server
 	
 	log.Println("Listening....")
-    http.ListenAndServe(":8080", nil)
+    http.ListenAndServe(":8080", nil)// serve on port 8080
 }
 

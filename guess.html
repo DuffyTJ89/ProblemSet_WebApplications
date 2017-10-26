@@ -11,9 +11,20 @@
   <body>
     <div class = "container">
         <h1>Guessing Game!</h1>
+        <h2>Guess a number 1 - 20</h2>
         <a href = "/guess"> New Game </a>
+        <br/>
+        <!-- Form that takes a number as input and stores it in the name field
+             Uses a HTTP GET request and redirects to /guess
+        -->
+        <form class="form-group" method="GET" action="/guess">
+            <label>Your guess : </label>
+            <input class="form-control" name="guess" style="width: 80px;">
+            <br/>
+            <button class="btn btn-success" type="submit">Guess</button>
+        </form>
     </div>
-    <p>New Game</p>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

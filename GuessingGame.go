@@ -7,7 +7,12 @@ package main
 import (
 	"log"
 	"net/http"
+	"html/template"
 )
+
+type message struct{
+	Message string 
+}
 
 //root request
 func server(w http.ResponseWriter, r *http.Request){
@@ -16,7 +21,13 @@ func server(w http.ResponseWriter, r *http.Request){
 
 // /guess request
 func guessHandler(w http.ResponseWriter, r *http.Request){
-	http.ServeFile(w, r, "guess.html")
+
+	message := &message{Message : "Guess a number 1 to 20 : "}
+
+	t, _ := template.ParseFiles("guess.tmpl")
+	t.Execute(w, message)
+
+	//http.ServeFile(w, r, "guess.html")
 }
 
 

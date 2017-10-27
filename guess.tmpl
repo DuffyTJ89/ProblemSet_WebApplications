@@ -27,6 +27,11 @@
         <!-- Only display if there is a value for user guess -->
         {{ if .GuessUser}}
             <p>You guessed {{.GuessUser}}</p>
+            <p>{{.Message}}</p>
+            {{if.Winner}}
+                <a href = "/guess">New Game</a>
+            {{end}}
+        {{end}}
         {{ end }}
     </div>
 

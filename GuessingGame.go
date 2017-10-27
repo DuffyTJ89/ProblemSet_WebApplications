@@ -8,6 +8,9 @@ import (
 	"log"
 	"net/http"
 	"html/template"
+	"math/rand"
+	"strconv"
+	"time"
 )
 
 type message struct{
@@ -21,6 +24,13 @@ func server(w http.ResponseWriter, r *http.Request){
 
 // /guess request
 func guessHandler(w http.ResponseWriter, r *http.Request){
+
+	rand.Seed(time.Now().UTC().UnixNano())
+
+	//check to see if the cookie is already set. If not set new one
+	if _, err := r.Cookie("target"); err != nil{
+		http.SetCookie(w, &http.Cookie{Name: "target", Value: strconv.Itoa(rand.Intn(19)+1)})
+	}
 
 	message := &message{Message : "Guess a number 1 to 20 : "}
 

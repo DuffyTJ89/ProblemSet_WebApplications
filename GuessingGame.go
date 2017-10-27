@@ -15,6 +15,7 @@ import (
 
 type message struct{
 	Message string 
+	GuessUser string
 }
 
 //root request
@@ -32,8 +33,10 @@ func guessHandler(w http.ResponseWriter, r *http.Request){
 		http.SetCookie(w, &http.Cookie{Name: "target", Value: strconv.Itoa(rand.Intn(19)+1)})
 	}
 
-	message := &message{Message : "Guess a number 1 to 20 : "}
+	guessUser := r.URL.Query().Get("guess")
+	message := &message{Message : "Guess a number 1 to 20 : ", GuessUser: guessUser}
 
+	//send variables to template
 	t, _ := template.ParseFiles("guess.tmpl")
 	t.Execute(w, message)
 

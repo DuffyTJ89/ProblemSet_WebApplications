@@ -23,6 +23,11 @@
             <br/>
             <button class="btn btn-success" type="submit">Guess</button>
         </form>
+
+        <!-- Only display if there is a value for user guess -->
+        {{ if .GuessUser}}
+            <p>You guessed {{.GuessUser}}</p>
+        {{ end }}
     </div>
 
     <!-- Optional JavaScript -->
